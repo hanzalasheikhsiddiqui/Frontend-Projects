@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+  <header class="topbar">
+    <h1>Scientific Calculator</h1>
+
+    <div class="controls">
+      <label class="switch" title="Degrees / Radians">
+        <input id="degToggle" type="checkbox" checked />
+        <span class="slider"></span>
+        <span class="label"><b>DEG</b> / RAD</span>
+      </label>
+
+      <button id="historyBtn" class="ghost" aria-expanded="false" title="Toggle history">
+        History
+      </button>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section class="display" aria-live="polite">
+      <div class="expr" id="expr">0</div>
+      <div class="result" id="result">0</div>
+    </section>
+
+    <section class="keys" id="keys" aria-label="Calculator keypad">
+      <!-- Row: functions -->
+      <button data-insert="(">(</button>
+      <button data-insert=")">)</button>
+      <button data-fn="percent">%</button>
+      <button data-fn="clear" class="warn">AC</button>
+      <button data-fn="back" class="warn">⌫</button>
+
+      <!-- Row: scientific -->
+      <button data-insert="sin">sin</button>
+      <button data-insert="cos">cos</button>
+      <button data-insert="tan">tan</button>
+      <button data-insert="log">log</button>
+      <button data-insert="ln">ln</button>
+
+      <!-- Row: more sci -->
+      <button data-insert="√">√</button>
+      <button data-insert="^">x^y</button>
+      <button data-insert="π">π</button>
+      <button data-insert="e">e</button>
+      <button data-fn="fact">x!</button>
+
+      <!-- Row: memory -->
+      <button data-fn="mc" title="Memory Clear">MC</button>
+      <button data-fn="mr" title="Memory Recall">MR</button>
+      <button data-fn="mplus" title="Memory Add">M+</button>
+      <button data-fn="mminus" title="Memory Subtract">M-</button>
+      <button data-fn="sign" title="Toggle sign">±</button>
+
+      <!-- Row: numbers/operators -->
+      <button data-insert="7">7</button>
+      <button data-insert="8">8</button>
+      <button data-insert="9">9</button>
+      <button data-insert="÷" class="op">÷</button>
+      <button data-insert="×" class="op">×</button>
+      <button data-insert="4">4</button>
+      <button data-insert="5">5</button>
+      <button data-insert="6">6</button>
+      <button data-insert="- " class="op">−</button>
+      <button data-insert="+ " class="op">+</button>
+      <button data-insert="1">1</button>
+      <button data-insert="2">2</button>
+      <button data-insert="3">3</button>
+      <button data-insert=".">.</button>
+      <button data-fn="eval" class="eq">=</button>
+      <button data-insert="0" class="zero">0</button>
+    </section>
+  </main>
+  <aside class="history" id="history" aria-label="History" aria-hidden="true">
+    <header>History</header>
+    <ul id="historyList"></ul>
+</aside>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+/* ---------- Global Styles ---------- */
+:root {
+  --bg: #0e0f13;
+  --card: #151923;
+  --panel: #131722;
+  --text: #e7eaf3;
+  --muted: #96a0b5;
+  --accent: #00bcd4;
+  --accent-hover: #02c8df;
+  --warn: #f25c54;
+  --eq: #4caf50;
+  --shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  --radius: 12px;
+  font-family: "Poppins", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  /* background: radial-gradient(circle at top, #0d1117 0%, #090c11 100%); */
+  background-color: #ffffff;
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ---------- Layout ---------- */
+.app {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 380px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ---------- Header ---------- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--panel);
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius);
+}
+
+.topbar h1 {
+  font-size: 1rem;
+  color: var(--accent);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.controls {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+/* ---------- Toggle Switch ---------- */
+.switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.switch input {
+  display: none;
+}
+
+.switch .slider {
+  width: 34px;
+  height: 18px;
+  background: #444;
+  border-radius: 20px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.switch .slider::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(16px);
+  background: var(--accent);
+}
+
+.switch input:checked + .slider {
+  background: #2c3e50;
+}
+
+/* ---------- History Button ---------- */
+button.ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+button.ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ---------- Display ---------- */
+.display {
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 1rem;
+  text-align: right;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.3);
+}
+
+.display .expr {
+  color: var(--muted);
+  font-size: 1.7rem;
+  min-height: 20px;
+}
+
+.display .result {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--text);
+  word-wrap: break-word;
+}
+
+/* ---------- Keypad ---------- */
+.keys {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.6rem;
+}
+
+.keys button {
+  background: var(--panel);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.05),
+              0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.keys button:hover {
+  background: #1c202b;
+  transform: translateY(-2px);
+}
+
+.keys button:active {
+  transform: translateY(1px);
+  background: #171b24;
+}
+
+/* ---------- Button Colors ---------- */
+.keys button.op {
+  color: var(--accent);
+}
+
+.keys button.warn {
+  color: var(--warn);
+}
+
+.keys button.eq {
+  background: var(--eq);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
+}
+
+.keys button.eq:hover {
+  background: #5ed364;
+}
+
+.keys button.zero {
+  grid-column: span 5;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ---------- History Sidebar ---------- */
+.history {
+  position: fixed;
+  right: -260px;
+  top: 0;
+  width: 260px;
+  height: 100%;
+  background: var(--panel);
+  padding: 1rem;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+  transition: 0.35s ease;
+  overflow-y: auto;
+}
+
+.history.open {
+  right: 0;
+}
+
+.history header {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+.history ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.history li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.history li:last-child {
+  border-bottom: none;
+}
+
+/* Modal / History */
+.history {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  width: 340px;
+  max-height: 72vh;
+  background: var(--panel);
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(2,6,23,0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  overflow-y: auto;
+  padding: 1rem;
+  z-index: 1001; /* above backdrop */
+}
+
+/* Visible state */
+.history.open {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+/* Close button in top-right of modal */
+.history .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+}
+.history .close:hover { color: var(--text); }
+
+/* Backdrop (covers page when modal open) */
+body.show-history::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55); /* dark translucent */
+  backdrop-filter: blur(4px);
+  z-index: 1000; /* below modal, above page */
+  pointer-events: auto;
+}
+
+/* Prevent interacting with content under backdrop, but do NOT use pointer-events:none on body */
+body.show-history .app {
+  /* optional: add subtle scale or blur to content */
+  filter: blur(3px) grayscale(.03);
+  transition: filter 0.28s ease;
+}
+
+/* History header/list styles (keeps previous look) */
+.history header {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: var(--accent);
+  text-align: center;
+  padding-top: 6px;
+}
+
+/* ensure items inside modal are clickable */
+.history ul, .history li { z-index: 1002; }
+
+.history ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+}
+.history li {
+  background: rgba(255,255,255,0.05);
+  margin-bottom: 6px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  word-break: break-all;
+}
+.history li.empty {
+  text-align: center;
+  opacity: 0.6;
+}
+.clear-history {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: var(--warn, #ff5050);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+.clear-history:hover {
+  background: #ff3030;
+}
+body.show-history::before {
+  backdrop-filter: blur(4px);
+}
+body.show-history .app {
+  filter: none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 450px) {
+  .app {
+    width: 95%;
+  }
+
+  .keys {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .keys button.zero {
+    grid-column: span 4;
+  }
+}
