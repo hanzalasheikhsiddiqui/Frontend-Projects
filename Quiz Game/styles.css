@@ -1,0 +1,241 @@
+/* ==== GLOBAL STYLES ==== */
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: radial-gradient(circle at top left, #111 0%, #000 100%);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==== WRAPPER ==== */
+.wrapper {
+  max-width: 750px;
+  margin: 60px auto;
+  padding: 25px;
+}
+
+/* ==== QUIZ CONTAINER ==== */
+.quiz-box {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quiz-box:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+}
+
+/* ==== NAME INPUT BOX ==== */
+.name-box {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.name-box span {
+  font-weight: 600;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  color: #fff;
+  display: block;
+  margin-bottom: 15px;
+}
+
+#name-input-box {
+  height: 45px;
+  font-size: 1.2rem;
+  width: 80%;
+  margin-top: 20px;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  color: #fff;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#name-input-box:focus {
+  border-color: #00ffc6;
+}
+
+/* ==== BUTTONS ==== */
+button {
+  border: none;
+  padding: 10px 20px;
+  margin-top: 25px;
+  font-size: 1rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #00ffc6, #00bfff);
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #00bfff, #00ffc6);
+  box-shadow: 0 4px 20px rgba(0, 255, 198, 0.3);
+}
+
+button:disabled {
+  display: none;
+}
+
+/* ==== QUIZ SECTION ==== */
+.quiz {
+  padding: 25px;
+  text-align: center;
+}
+
+#question h2 {
+  font-weight: 600;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  width: 45%;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+label:hover {
+  color: #00ffc6;
+}
+
+/* ==== RADIO BUTTON ==== */
+.option-input {
+  appearance: none;
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.option-input:checked {
+  border-color: #00ffc6;
+  background: #00ffc6;
+  box-shadow: 0 0 10px #00ffc6;
+}
+
+.option-input:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: #000;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ==== RESULT SECTION ==== */
+#result {
+  padding: 25px;
+  text-align: center;
+}
+
+#result .score-label h1 {
+  font-weight: 700;
+  font-size: 2rem;
+  color: #00ffc6;
+}
+
+#result .message {
+  font-size: 1.1rem;
+  margin-top: 15px;
+  color: #bbb;
+}
+
+/* ==== SCORE CHART ==== */
+.score-detail,
+.chart {
+  display: inline-block;
+  width: 48%;
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* ==== TABLE STYLING ==== */
+#result-stats {
+  margin-top: 30px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background: rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.grey {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.fa-check-circle {
+  color: #00ff88;
+}
+
+.fa-times-circle {
+  color: #ff3d00;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 768px) {
+  .wrapper {
+    width: 90%;
+    margin: 30px auto;
+  }
+
+  label {
+    width: 100%;
+  }
+
+  .quiz-box {
+    border-radius: 15px;
+  }
+}
