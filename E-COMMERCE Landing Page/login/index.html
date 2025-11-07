@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login / Signup | Harmas Wear</title>
+  <link rel="stylesheet" href="login.css" />
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+
+  <div class="auth-container">
+    <div class="form-box" id="login-form">
+      <h2>Welcome Back</h2>
+      <input type="text" id="loginEmail" placeholder="Email or Phone" />
+      <input type="password" id="loginPassword" placeholder="Password" />
+      <button id="loginBtn">Login</button>
+      <p>Don’t have an account? <span id="to-signup">Sign up</span></p>
+    </div>
+
+    <div class="form-box" id="signup-form" style="display:none;">
+      <h2>Create Account</h2>
+      <input type="text" id="signupName" placeholder="Full Name" />
+      <input type="text" id="signupPhone" placeholder="Phone Number" />
+      <input type="email" id="signupEmail" placeholder="Email" />
+      
+      <select id="signupCity">
+        <option value="">Select City</option>
+        <option>Karachi</option>
+        <option>Lahore</option>
+        <option>Islamabad</option>
+        <option>Rawalpindi</option>
+        <option>Faisalabad</option>
+        <option>Multan</option>
+        <option>Peshawar</option>
+        <option>Quetta</option>
+        <option>Hyderabad</option>
+        <option>Sialkot</option>
+        <option>Gujranwala</option>
+        <option>Abbottabad</option>
+        <option>Bahawalpur</option>
+        <option>Okara</option>
+        <option>Sargodha</option>
+        <option>Sukkur</option>
+        <option>Larkana</option>
+        <option>Mardan</option>
+        <option>Mirpur Khas</option>
+        <option>Gwadar</option>
+      </select>
+
+      <input type="text" id="signupAddress" placeholder="Full Address" />
+      <input type="password" id="signupPassword" placeholder="Password" />
+      <button id="signupBtn">Sign Up</button>
+      <p>Already have an account? <span id="to-login">Login</span></p>
+    </div>
+  </div>
+
+  <script type="module" src="login.js"></script>
+</body>
+</html>
